@@ -4,6 +4,7 @@ package com.examenGuevara.demo.entity;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -30,42 +31,47 @@ import lombok.NoArgsConstructor;
 @Table(name="HOTELES")
 public class Hotel {
 
-	@Id
-	@Column(name = "hotel_id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id = 0L;
+    @Id
+    @Column(name = "hotel_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id = 0L;
 
-	@NotNull
-	@Column(name = "NOMBRE_HOTEL")
+    @NotNull
+    @Column(name = "NOMBRE_HOTEL")
+    @JsonProperty("nombreHotel")
     private String nombreHotel;
 
-	@NotNull
-	@Column(name = "DIRECCION")
+    @NotNull
+    @Column(name = "DIRECCION")
+    @JsonProperty("direccion")
     private String direccion;
 
-	@NotNull
-	@Column(name = "LOCALIDAD")
+    @NotNull
+    @Column(name = "LOCALIDAD")
+    @JsonProperty("localidad")
     private String localidad;
 
-	@NotNull
-	@Column(name = "PROVINCIA")
+    @NotNull
+    @Column(name = "PROVINCIA")
+    @JsonProperty("provincia")
     private String provincia;
 
-	@NotNull
-	@Column(name = "TELEFONO")
+    @NotNull
+    @Column(name = "TELEFONO")
+    @JsonProperty("telefono")
     private String telefono;
 
-	@NotNull
-	@Column(name = "NUMERO_ESTRELLAS")
+    @NotNull
+    @Column(name = "NUMERO_ESTRELLAS")
+    @JsonProperty("numeroEstrellas")
     private String numeroEstrellas;
 
-	//!OneToMany's
-	@OneToMany(											//*Verificado
-		mappedBy = "hotelReferente",
-		cascade = CascadeType.ALL,
-		fetch = FetchType.LAZY
-	)
-	@JsonIgnore
-	private Set<Reserva> reservas;
-
+    //!OneToMany's
+    @OneToMany(
+        mappedBy = "hotelReferente",
+        cascade = CascadeType.ALL,
+        fetch = FetchType.LAZY
+    )
+    @JsonIgnore
+    private Set<Reserva> reservas;
 }

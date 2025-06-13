@@ -4,6 +4,7 @@ package com.examenGuevara.demo.entity;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -30,47 +31,50 @@ import lombok.NoArgsConstructor;
 @Table(name="VUELOS")
 public class Vuelo {
 
-	@Id
-	@Column(name = "vuelo_id")
+    @Id
+    @Column(name = "vuelo_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id = 0L;
 
-	@NotNull
-	@Column(name = "FECHA_SALIDA")
-	//@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MMM-yy", timezone = "UTC")
+    @NotNull
+    @Column(name = "FECHA_SALIDA")
+    @JsonProperty("fechaSalida")
     private String fechaSalida;
 
-	@NotNull
-	@Column(name = "HORA_SALIDA")
+    @NotNull
+    @Column(name = "HORA_SALIDA")
+    @JsonProperty("horaSalida")
     private String horaSalida;
 
-	@NotNull
-	@Column(name = "FECHA_LLEGADA")
+    @NotNull
+    @Column(name = "FECHA_LLEGADA")
+    @JsonProperty("fechaLlegada")
     private String fechaLlegada;
 
-	@NotNull
-	@Column(name = "HORA_LLEGADA")
+    @NotNull
+    @Column(name = "HORA_LLEGADA")
+    @JsonProperty("horaLlegada")
     private String horaLlegada;
 
-	@NotNull
-	@Column(name = "ORIGEN")
+    @NotNull
+    @Column(name = "ORIGEN")
     private String origen;
 
-	@NotNull
-	@Column(name = "DESTINO")
+    @NotNull
+    @Column(name = "DESTINO")
     private String destino;
 
-	@NotNull
-	@Column(name = "NUMERO_PLAZAS_TOTALES")
+    @NotNull
+    @Column(name = "NUMERO_PLAZAS_TOTALES")
+    @JsonProperty("nPlazasTotales")
     private int nPlazasTotales;
 
-	//!OneToMany's
-	@OneToMany(											//*Verificado
-		mappedBy = "vueloReferente",
-		cascade = CascadeType.ALL,
-		fetch = FetchType.LAZY
-	)
-	@JsonIgnore
-	private Set<Reserva> reservas;
-
+    //!OneToMany's
+    @OneToMany(
+        mappedBy = "vueloReferente",
+        cascade = CascadeType.ALL,
+        fetch = FetchType.LAZY
+    )
+    @JsonIgnore
+    private Set<Reserva> reservas;
 }
