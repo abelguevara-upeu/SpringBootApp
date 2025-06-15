@@ -34,6 +34,7 @@ public class Sucursal {
     @Id
     @Column(name = "sucursal_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Builder.Default
     private Long id = 0L;
 
     @NotNull

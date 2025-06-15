@@ -29,13 +29,13 @@ import lombok.NoArgsConstructor;
 @Table(name="ROLES")
 public class Rol {
 
+    @Id
+    @Column(name = "rol_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Builder.Default
+    private Long id = 0L;
 
-	@Id
-	@Column(name = "rol_id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id = 0L;
-
-	@Column(name = "ROL")
+    @Column(name = "ROL")
     private String rol;
 
     //!OneToMany's

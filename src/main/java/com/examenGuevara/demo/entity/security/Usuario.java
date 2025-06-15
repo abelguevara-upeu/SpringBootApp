@@ -30,10 +30,11 @@ import lombok.NoArgsConstructor;
 public class Usuario {
 
 
-	@Id
-	@Column(name = "usuario_id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id = 0L;
+    @Id
+    @Column(name = "usuario_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Builder.Default
+    private Long id = 0L;
 
 	@Column(name = "USUARIO")
     private String usuario;

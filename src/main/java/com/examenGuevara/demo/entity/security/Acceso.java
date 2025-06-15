@@ -16,7 +16,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Null;
@@ -39,6 +38,7 @@ public class Acceso {
 	@Id
 	@Column(name = "acceso_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Builder.Default
 	private Long id = 0L;
 
 	@NotNull

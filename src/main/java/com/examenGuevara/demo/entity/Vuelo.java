@@ -34,6 +34,7 @@ public class Vuelo {
     @Id
     @Column(name = "vuelo_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Builder.Default
     private Long id = 0L;
 
     @NotNull

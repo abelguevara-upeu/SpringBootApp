@@ -34,6 +34,7 @@ public class Hotel {
     @Id
     @Column(name = "hotel_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Builder.Default
     private Long id = 0L;
 
     @NotNull

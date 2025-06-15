@@ -34,6 +34,7 @@ public class Cliente {
     @Id
     @Column(name = "CLIENTE_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Builder.Default
     private Long id = 0L;
 
     @NotNull
